@@ -1,0 +1,90 @@
+/* ── 기본 레이아웃 ───────────────────────────────── */
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; padding: 0;
+}
+
+/* 로그인 박스 */
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* 페이지 표시 토글 */
+.login-active { display: block; }
+.main-system { display: none; }
+.main-system.active { display: block; }
+
+/* ── 사이드바 ───────────────────────────────────── */
+.sidebar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+.sidebar .brand-title {
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.sidebar .nav-link {
+  color: #fff;
+  padding: 12px 20px;
+  margin: 5px 10px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: rgba(255,255,255,0.2);
+  transform: translateX(5px);
+}
+
+/* ── 메인 콘텐츠 ───────────────────────────────── */
+.main-content {
+  padding: 30px;
+}
+
+/* ── KPI 카드 ───────────────────────────────────── */
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-left: 4px solid;
+  transition: transform 0.3s;
+}
+.stat-card:hover { transform: translateY(-5px); }
+.stat-card.sales   { border-color: #28a745; }
+.stat-card.orders  { border-color: #17a2b8; }
+.stat-card.inventory { border-color: #ffc107; }
+.stat-card.alerts  { border-color: #dc3545; }
+
+/* ── 차트·테이블 컨테이너 ───────────────────────── */
+.chart-container,
+.table-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+/* ── 상품 관리 ───────────────────────────────────── */
+.product-form {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* ── 재고 상태 ───────────────────────────────────── */
+.low-stock    { color: #dc3545; font-weight: bold; }
+.medium-stock { color: #ffc107; font-weight: bold; }
+.normal-stock { color: #28a745; font-weight: bold; }
