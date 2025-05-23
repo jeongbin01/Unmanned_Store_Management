@@ -1,141 +1,155 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>무인 매장 관리 시스템</title>
-
-  <!-- 라이브러리 불러오기 -->
-  <link href="boutstrap/bootstrap-5.3.1-dist/bootstrap-5.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="boutstrap/bootstrap-4.6.2-dist/bootstrap-4.6.2-dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="CSS/Style.css">
-
-  <!-- Chart.js -->
-  <strong src="chart/chart.umd.js"></strong>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무인 매장 관리 시스템 - 대시보드</title>
+    <!-- Bootstrap CSS -->
+    <link href="boutstrap/bootstrap-5.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- cdnjs : Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
+
+</head>
+
 <body>
-  <!-- 로그인 화면 -->
-  <div id="login-screen" class="login-active">
-    <div class="container">
-      <div class="login-container">
-        <div class="text-center mb-4">
-          <i class="fas fa-store fa-3x text-primary mb-3"></i>
-          <h2>무인 매장 관리 시스템</h2>
-          <p class="text-muted">관리자 로그인</p>
+    <!-- 로그인 화면 -->
+    <div id="login-screen" class="login-active">
+        <div class="container">
+            <div class="login-container">
+                <div class="text-center mb-4">
+                    <i class="fas fa-store fa-3x text-primary mb-3"></i>
+                    <h2>무인 매장 관리 시스템</h2>
+                    <p class="text-muted">관리자 로그인</p>
+                </div>
+                <form id="login-form">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">사용자명</label>
+                        <input type="text" class="form-control" id="username" value="admin" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">비밀번호</label>
+                        <input type="password" class="form-control" id="password" value="1234" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">로그인</button>
+                </form>
+            </div>
         </div>
-        <form id="login-form">
-          <div class="mb-3">
-            <label for="username" class="form-label">사용자명</label>
-            <input type="text" class="form-control" id="username" value="admin" required>
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">비밀번호</label>
-            <input type="password" class="form-control" id="password" value="1234" required>
-          </div>
-          <button type="submit" class="btn btn-primary w-100">로그인</button>
-        </form>
-      </div>
     </div>
-  </div>
 
-  <!-- 대시보드 화면 -->
-  <div id="main-system" class="main-system">
-    <div class="container-fluid">
-      <div class="row">
-        <!-- 사이드바 -->
-        <div class="col-md-2 p-0 sidebar">
-          <div class="brand-title">
-            <i class="fas fa-store"></i> 매장 관리
-          </div>
-          <nav class="nav flex-column">
-            <a class="nav-link active" href="index.html"><i class="fas fa-tachometer-alt me-2"></i>대시보드</a>
-            <a class="nav-link" href="products.html"><i class="fas fa-box me-2"></i>상품 관리</a>
-            <a class="nav-link" href="inventory.html"><i class="fas fa-warehouse me-2"></i>재고 관리</a>
-            <a class="nav-link" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>로그아웃</a>
-          </nav>
+    <!-- 메인 시스템 -->
+    <div id="main-system" class="main-system">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- 사이드바 -->
+                <div class="col-md-2 p-0">
+                    <div class="sidebar">
+                        <div class="brand-title">
+                            <i class="fas fa-store"></i> 매장 관리
+                        </div>
+                        <nav class="nav flex-column">
+                            <a class="nav-link active" href="index.html">
+                                <i class="fas fa-tachometer-alt me-2"></i> 대시보드
+                            </a>
+                            <a class="nav-link" href="products.html">
+                                <i class="fas fa-box me-2"></i> 상품 관리
+                            </a>
+                            <a class="nav-link" href="inventory.html">
+                                <i class="fas fa-warehouse me-2"></i> 재고 관리
+                            </a>
+                            <a class="nav-link" href="orders.html">
+                                <i class="fas fa-shopping-cart me-2"></i> 주문 내역
+                            </a>
+                            <a class="nav-link" href="#" onclick="logout()">
+                                <i class="fas fa-sign-out-alt me-2"></i> 로그아웃
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- 메인 콘텐츠 -->
+                <div class="col-md-10">
+                    <div class="main-content">
+                        <h2><i class="fas fa-tachometer-alt me-2"></i>매출 대시보드</h2>
+
+                        <!-- KPI 카드들 -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="stat-card sales">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted">오늘 매출</h6>
+                                            <h3 class="mb-0">847,000원</h3>
+                                            <small class="text-success">↑ 12.5%</small>
+                                        </div>
+                                        <i class="fas fa-won-sign fa-2x text-success"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card orders">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted">오늘 주문</h6>
+                                            <h3 class="mb-0">127</h3>
+                                            <small class="text-info">↑ 8.2%</small>
+                                        </div>
+                                        <i class="fas fa-shopping-cart fa-2x text-info"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card inventory">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted">전체 상품</h6>
+                                            <h3 class="mb-0">245</h3>
+                                            <small class="text-warning">5개 부족</small>
+                                        </div>
+                                        <i class="fas fa-box fa-2x text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card alerts">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="text-muted">재고 알림</h6>
+                                            <h3 class="mb-0">5</h3>
+                                            <small class="text-danger">즉시 확인</small>
+                                        </div>
+                                        <i class="fas fa-exclamation-triangle fa-2x text-danger"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 차트 섹션 -->
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="chart-container">
+                                    <h5>주간 매출 추이</h5>
+                                    <canvas id="salesChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="chart-container">
+                                    <h5>상품별 판매량</h5>
+                                    <canvas id="productChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- 메인 콘텐츠 -->
-        <div class="col-md-10 main-content">
-          <h2><i class="fas fa-tachometer-alt me-2"></i>매출 대시보드</h2>
-
-          <!-- KPI 카드 -->
-          <div class="row mb-4">
-            <!-- 오늘 매출 -->
-            <div class="col-md-3">
-              <div class="stat-card sales">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <h6 class="text-muted">오늘 매출</h6>
-                    <h3 class="mb-0">₩847,000</h3>
-                    <small class="text-success">↑ 12.5%</small>
-                  </div>
-                  <i class="fas fa-won-sign fa-2x text-success"></i>
-                </div>
-              </div>
-            </div>
-            <!-- 오늘 주문 -->
-            <div class="col-md-3">
-              <div class="stat-card orders">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <h6 class="text-muted">오늘 주문</h6>
-                    <h3 class="mb-0">127</h3>
-                    <small class="text-info">↑ 8.2%</small>
-                  </div>
-                  <i class="fas fa-shopping-cart fa-2x text-info"></i>
-                </div>
-              </div>
-            </div>
-            <!-- 전체 상품 -->
-            <div class="col-md-3">
-              <div class="stat-card inventory">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <h6 class="text-muted">전체 상품</h6>
-                    <h3 class="mb-0">245</h3>
-                    <small class="text-warning">5개 부족</small>
-                  </div>
-                  <i class="fas fa-box fa-2x text-warning"></i>
-                </div>
-              </div>
-            </div>
-            <!-- 재고 알림 -->
-            <div class="col-md-3">
-              <div class="stat-card alerts">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <h6 class="text-muted">재고 알림</h6>
-                    <h3 class="mb-0">5</h3>
-                    <small class="text-danger">즉시 확인</small>
-                  </div>
-                  <i class="fas fa-exclamation-triangle fa-2x text-danger"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 차트 섹션 -->
-          <div class="row">
-            <div class="col-md-8">
-              <div class="chart-container">
-                <h5>주간 매출 추이</h5>
-                <canvas id="salesChart"></canvas>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="chart-container">
-                <h5>상품별 판매량</h5>
-                <canvas id="productChart"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- 공통 스크립트 -->
-  <script src="bootstrap-5.3.1-dist/bootstrap-5.3.1-dist/js/bootstrap.esm.min.js"></script>
-  <script src="JS/app.js"></script>
+    <!-- bootstrap -->
+    <script src="boutstrap/bootstrap-5.3.1-dist/js/bootstrap.esm.min.js"></script>
+    <!-- chart -->
+    <script src="chart/chart.umd.js"></script>
 </body>
+
 </html>
